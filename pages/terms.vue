@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useSeoMeta, useHead } from '@vueuse/head';
 
 const title = "Calm Move | Home";
 const description = "Smart Pantry";
@@ -13,8 +12,8 @@ useSeoMeta({
 
 useHead({
     link: [
-        {rel: 'icon', type: 'image/png', href: '../public/logo.png'},
-        {rel: 'stylesheet', href: '../public/reset.css'}
+        { rel: 'icon', type: 'image/png', href: '/logo.png' },
+        { rel: 'stylesheet', href: '/reset.css' }
     ]
 });
 </script>
@@ -29,4 +28,3 @@ useHead({
 
 <style scoped></style>
 <style></style>
-
