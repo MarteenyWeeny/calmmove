@@ -5,7 +5,7 @@
         <NavBar />
         <div id="CMMain" class="CM-main"></div>
         <!-- <Cookies /> -->
-        <!-- <Copyright /> -->
+        <Copyright />
     </client-only>
 </template>
 

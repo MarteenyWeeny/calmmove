@@ -4,7 +4,7 @@
 }
 
 body {
-    font-family: "Funnel Sans", sans-serif;
+    font-family: "Funnel Sans", Arial, Helvetica, sans-serif;
     background-color: #f2f4f7;
 }
 
@@ -33,7 +33,7 @@ body {
     padding: 10px 8px;
     display: flex;
     align-items: center;
-    font-family: "Roboto", sans-serif;
+    font-family: "Roboto", Arial, serif, sans-serif;
     font-size: 1.2em;
     text-decoration: none;
     border-radius: 8px;
@@ -81,3 +81,20 @@ body {
 
 /* main contents */
 /* copyright */
+.CM-footer-area {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 0.8em;
+    text-align: center;
+    color: #666;
+}
+
+.CM-footer-links a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #666;
+}
+
+.CM-footer-copyright {
+    margin-top: 5px;
+}

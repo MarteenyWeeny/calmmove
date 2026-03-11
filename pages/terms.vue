@@ -4,7 +4,7 @@
     <client-only>
         <NavBar />
         <div id="CMMain" class="CM-main"></div>
-        <!-- <Copyright /> -->
+        <Copyright />
     </client-only>
 </template>
 
