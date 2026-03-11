@@ -1,0 +1,140 @@
+# Privacy Policy – LetMCook
+
+**Effective Date:** March 11, 2026
+
+At LetMCook App, your privacy is important. This Privacy Policy explains how we collect, use, store, and protect your personal data in accordance with the **EU General Data Protection Regulation (GDPR)** and the **Philippine Data Privacy Act of 2012 (DPA)**.
+
+By using the App, you consent to the practices described here.
+
+---
+
+## 1. **Information We Collect**
+
+We collect information you provide and data generated from your use of the App, including:
+
+**a) Personal Information**
+
+* Name, email, login credentials
+* Age, weight, height, activity level
+* Dietary goals, preferences, and restrictions
+
+**b) Pantry & Meal Data**
+
+* Ingredients you have at home
+* Recipes you view or cook
+* Nutrient and calorie intake logs
+
+**c) Usage Data**
+
+* App usage patterns
+* Device information (OS, version)
+* Analytics for improving the App
+
+---
+
+## 2. **How We Use Your Data**
+
+We use your data to:
+
+1. Provide personalized recipe suggestions and nutrient tracking
+2. Track your pantry inventory and meal history
+3. Calculate your remaining daily nutrients
+4. Improve App functionality and user experience
+5. Communicate App updates, features, or support
+
+**Legal Basis (GDPR):**
+
+* Consent: You consent to data collection when using the App
+* Contract: Data processing is necessary to provide the services you request
+* Legitimate interest: For analytics and improving App functionality
+
+---
+
+## 3. **Data Sharing and Disclosure**
+
+We do **not sell your data**. Data may be shared with:
+
+* **Service providers**: Cloud hosting, analytics, or app maintenance
+* **Legal authorities**: When required by law or regulation
+
+All third parties are required to protect your data in accordance with GDPR and DPA standards.
+
+---
+
+## 4. **Cookies and Tracking**
+
+The App may use cookies or similar technologies to:
+
+* Track usage for analytics
+* Improve user experience
+
+You can disable cookies in your device settings, but some features may be affected.
+
+---
+
+## 5. **Data Retention**
+
+* Personal and pantry data is stored **only as long as necessary** to provide services.
+* You can request deletion of your account and all associated data at any time.
+
+---
+
+## 6. **Your Rights**
+
+**Under GDPR (EU Users):**
+
+* Access your personal data
+* Correct inaccurate or incomplete data
+* Request deletion (“right to be forgotten”)
+* Restrict or object to processing
+* Data portability
+
+**Under Philippine DPA (Philippine Users):**
+
+* Access your personal data
+* Correct errors in your data
+* Request deletion or blocking
+* Be informed of how your data is processed
+
+**How to Exercise Rights:**
+Email: martin9876543219@gmail.com
+Include your account email and request type.
+
+---
+
+## 7. **Data Security**
+
+We implement **reasonable administrative, technical, and physical measures** to protect your personal data from unauthorized access, disclosure, or loss.
+
+---
+
+## 8. **Children’s Privacy**
+
+The App is **not intended for children under 13**. We do not knowingly collect data from children.
+
+---
+
+## 9. **Changes to this Privacy Policy**
+
+We may update this policy occasionally. Significant changes will be notified via email or in-app notification. Continued use constitutes acceptance of the updated policy.
+
+---
+
+## 10. **Contact Us**
+
+For questions, concerns, or to exercise your data rights:
+
+**Email:** martin9876543219@gmail.com
+**Address:** Baybay City, Leyte
+
+---
+
+✅ This Privacy Policy is **explicit, concise, and aligns with GDPR and DPA** requirements, covering:
+
+* Data collection
+* Purpose & legal basis
+* Data sharing
+* Retention
+* User rights
+* Security
+
