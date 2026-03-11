@@ -1,0 +1,311 @@
+# MVP Use Cases — Personalized Recipe & Nutrient Counter App
+
+## 1. User Registers and Sets Nutrition Goals
+
+**Actor:** User
+**Description:** User creates an account and sets nutritional targets.
+
+**Flow:**
+
+1. User signs up or logs in.
+2. User enters basic information:
+
+   * Age
+   * Weight
+   * Height
+   * Activity level
+3. User selects dietary goal:
+
+   * Lose weight
+   * Maintain
+   * Gain muscle
+4. App calculates or lets user set:
+
+   * Daily calories
+   * Protein target
+   * Carb target
+   * Fat target
+
+**Outcome:**
+User now has a **daily nutrient target profile**.
+
+---
+
+# 2. User Adds Ingredients to Pantry
+
+**Actor:** User
+**Description:** User records available ingredients at home.
+
+**Flow:**
+
+1. User opens **Pantry Tab**.
+2. User adds ingredients manually or via search.
+3. User optionally adds:
+
+   * Quantity
+   * Expiration date
+4. Ingredients are saved in the pantry list.
+
+**Outcome:**
+App knows what ingredients are available for recipe suggestions.
+
+---
+
+# 3. App Suggests Recipes Based on Pantry Ingredients
+
+**Actor:** System
+
+**Description:** App recommends recipes that maximize the use of pantry ingredients.
+
+**Flow:**
+
+1. User clicks **“Suggest Recipes.”**
+2. App scans pantry ingredients.
+3. App searches recipe database.
+4. Recipes are ranked by:
+
+   * Highest ingredient match
+   * Fewest missing ingredients
+5. User receives recipe suggestions.
+
+**Example:**
+
+Pantry:
+
+* Eggs
+* Rice
+* Chicken
+* Onion
+
+Suggested recipes:
+
+1. Chicken fried rice
+2. Omelet rice
+3. Chicken omelet
+
+**Outcome:**
+User gets **recipes that use what they already have**.
+
+---
+
+# 4. App Suggests Recipes Based on Remaining Nutrient Needs
+
+**Actor:** System
+
+**Description:** App suggests recipes based on **remaining nutrients for the day**.
+
+**Flow:**
+
+1. User logs meals eaten.
+2. App calculates remaining daily nutrients.
+
+Example:
+
+Daily targets:
+
+* Calories: 2000
+* Protein: 120g
+
+Current intake:
+
+* Calories: 1400
+* Protein: 60g
+
+Remaining:
+
+* Calories: 600
+* Protein: 60g
+
+3. App recommends recipes that help meet remaining nutrients.
+
+Example suggestions:
+
+* Grilled chicken bowl
+* Tuna salad
+* Protein smoothie
+
+**Outcome:**
+User gets recipes that **balance their daily nutrition**.
+
+---
+
+# 5. User Views Recipe Details
+
+**Actor:** User
+
+**Description:** User opens a recipe to see ingredients and nutrition.
+
+**Flow:**
+
+1. User clicks a recipe.
+2. App displays:
+
+   * Ingredients list
+   * Cooking steps
+   * Calories
+   * Protein / carbs / fats
+3. App highlights:
+
+   * Ingredients already in pantry
+   * Missing ingredients
+
+**Outcome:**
+User sees if they can cook the recipe immediately.
+
+---
+
+# 6. User Logs a Cooked Meal
+
+**Actor:** User
+
+**Description:** User records that they cooked and ate a recipe.
+
+**Flow:**
+
+1. User clicks **“Cooked This.”**
+2. App logs recipe nutrients to daily intake.
+3. App subtracts used ingredients from pantry.
+
+**Outcome:**
+Daily nutrition and pantry inventory update automatically.
+
+---
+
+# 7. User Tracks Daily Nutrient Intake
+
+**Actor:** User
+
+**Description:** User monitors their nutrient progress.
+
+**Flow:**
+
+1. User opens **Nutrition Dashboard**.
+2. App displays:
+
+   * Calories consumed
+   * Protein consumed
+   * Carbs consumed
+   * Fat consumed
+3. App shows remaining nutrients for the day.
+
+Example:
+
+Protein:
+`80g / 120g`
+
+**Outcome:**
+User understands what nutrients they still need.
+
+---
+
+# 8. App Suggests Recipes Using Expiring Ingredients
+
+**Actor:** System
+
+**Description:** App recommends recipes to prevent food waste.
+
+**Flow:**
+
+1. App checks pantry expiration dates.
+2. Ingredients nearing expiration are flagged.
+3. Recipes using those ingredients are prioritized.
+
+Example:
+
+Expiring soon:
+
+* Spinach
+* Milk
+
+Suggested:
+
+* Spinach omelet
+* Creamy spinach pasta
+
+**Outcome:**
+Food waste is minimized.
+
+---
+
+# 9. User Searches Recipes Manually
+
+**Actor:** User
+
+**Description:** User can search recipes independent of suggestions.
+
+**Flow:**
+
+1. User enters keywords.
+2. App filters by:
+
+   * Pantry ingredients
+   * Nutrient goals
+   * Calories
+3. Results appear ranked by ingredient match.
+
+**Outcome:**
+User has manual control.
+
+---
+
+# 10. Grocery List for Missing Ingredients
+
+**Actor:** System
+
+**Description:** App generates a shopping list.
+
+**Flow:**
+
+1. User selects recipe.
+2. App compares ingredients with pantry.
+3. Missing ingredients are added to grocery list.
+
+Example:
+
+Recipe requires:
+
+* Chicken
+* Garlic
+* Soy sauce
+
+Pantry has:
+
+* Chicken
+
+Shopping list:
+
+* Garlic
+* Soy sauce
+
+**Outcome:**
+User can quickly shop for missing ingredients.
+
+---
+
+# Core MVP Features (Summary)
+
+The **minimum version of the app** only needs:
+
+1. User nutrition goals
+2. Pantry ingredient tracker
+3. Recipe database
+4. Recipe suggestion engine
+5. Meal logging
+6. Nutrient tracker
+7. Grocery list
+
+Everything else (AI, scanning, etc.) can come later.
+
+---
+
+# Optional Advanced Features (Not MVP)
+
+Future upgrades could include:
+
+* 📷 Ingredient **barcode scanning**
+* 🧠 **AI meal planning**
+* 📅 **Weekly meal plans**
+* 🛒 Grocery store integration
+* 📊 Micronutrient tracking
+* 🍽️ Restaurant meal logging
+* 🤖 ChatGPT-style recipe generator
