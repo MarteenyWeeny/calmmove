@@ -1,0 +1,105 @@
+# Terms of Service (ToS)
+
+**Effective Date:** March 11, 2026
+
+By accessing or using the LetMCook App, you agree to these Terms of Service (“ToS”) and our Privacy Policy. If you do not agree, do not use the App.
+
+---
+
+## 1. **Purpose of the App**
+
+The App provides personalized recipe suggestions and nutrient tracking based on the ingredients in your pantry and your dietary goals.
+
+---
+
+## 2. **Eligibility**
+
+You must be at least 18 years old or the age of majority in your jurisdiction to use the App.
+
+---
+
+## 3. **User Account**
+
+* You are responsible for providing accurate information about yourself, including dietary preferences, height, weight, and daily nutrition goals.
+* You are responsible for maintaining the confidentiality of your account credentials.
+
+---
+
+## 4. **User Data and Privacy**
+
+The App collects personal and sensitive information including:
+
+* Personal details (age, weight, height)
+* Pantry inventory and meal history
+* Dietary preferences and nutrient intake
+
+**Use of Data:**
+
+* To generate personalized recipe suggestions and nutrient tracking.
+* To improve the App’s functionality and analytics.
+* To communicate with you regarding App updates or features.
+
+**Legal Compliance:**
+
+* **GDPR:** Users in the EU have rights to access, correct, delete, or restrict processing of their personal data. You may request your data or withdraw consent at any time.
+* **Philippine DPA:** Personal data is processed lawfully, fairly, and securely. Users have the right to access, correct, and request deletion of their personal data.
+
+**Data Sharing:**
+
+* We do **not sell** your personal data.
+* Data may be shared with third-party service providers only to the extent necessary to operate the App (e.g., cloud hosting).
+
+---
+
+## 5. **User Responsibilities**
+
+* You must not provide false, inaccurate, or misleading information.
+* You agree not to use the App to engage in unlawful activities or violate the rights of others.
+
+---
+
+## 6. **Intellectual Property**
+
+* All App content, recipes, logos, and designs are the property of [Company Name].
+* You may not reproduce, distribute, or create derivative works without permission.
+
+---
+
+## 7. **Limitation of Liability**
+
+* The App provides nutritional information for general guidance only. It **does not replace professional medical or dietary advice**.
+* [Company Name] is not liable for any health issues, losses, or damages arising from the use of the App.
+
+---
+
+## 8. **Termination**
+
+We may suspend or terminate your account for violations of these ToS.
+You may delete your account at any time, which will remove your personal data from the App in compliance with GDPR and DPA regulations.
+
+---
+
+## 9. **Modifications**
+
+We may update these ToS at any time. Users will be notified of significant changes via email or in-app notifications. Continued use of the App constitutes acceptance of the revised ToS.
+
+---
+
+## 10. **Governing Law**
+
+* EU Users: GDPR applies; local EU law also governs.
+* Philippine Users: Data Privacy Act of 2012 applies; Philippine law governs disputes.
+* Other jurisdictions: Governed by applicable local laws.
+
+---
+
+## 11. **Contact**
+
+For questions or to exercise your data rights:
+
+**Email:** martin9876543219@gmail.com
+**Address:** Baybay City, Leyte
+
+---
+
+This ToS covers **data collection, usage, user rights, and liability** explicitly while complying with **GDPR and the Philippine DPA**, suitable for an MVP app handling personal health and pantry data.
