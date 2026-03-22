@@ -3,8 +3,9 @@
   <client-only>
     <NavBar :navAdminMode="navAdminMode" />
     <div id="CMMain" class="CM-main">
-      <span id="CMPageTitle" class="CM-page-title CM-hidden">Latest</span>
-      <div id="CMContainer" class="CM-container"></div>
+      <span id="CMSimpleHello" class="CM-simple-hello CM-hidden">
+        Hello, {{ fullName }}!
+      </span>
     </div>
     <Cookies />
     <Copyright />
@@ -33,6 +34,7 @@ useHead({
     },
   ],
 });
+/* Cookies */
 const globalDelay = 500;
 const allowCookies = useCookie<boolean>("allowCookies", {
   sameSite: "none",
@@ -70,19 +72,8 @@ const fullName = useCookie<string>("fullName", {
   maxAge: 60 * 60 * 24,
 });
 fullName.value = fullName.value ?? "";
-type ContentItem = {
-  id: string;
-  author: string;
-  title: string;
-  content: string;
-  isSynchronized: number;
-  createdAt: number;
-};
-type ContentResponse = {
-  contents: ContentItem[];
-};
+/* Access Control */
 const router = useRouter();
-const CMServer = "https://calmmove-api.vercel.app";
 let navAdminMode = userLevel.value >= 2 ? "CM-nav-admin" : "";
 function getByID<T extends HTMLElement>(id: string) {
   return document.getElementById(id) as T;
@@ -90,15 +81,15 @@ function getByID<T extends HTMLElement>(id: string) {
 function checkAuthorizations() {
   if (!accessToken.value) {
     router.push("/login");
-  } else if (userLevel.value >= 2) {
-    router.push("/admin");
+  } else if (userLevel.value <= 2) {
+    router.push("/");
   }
   const navBasic = getByID<HTMLDivElement>("CMNavBasic");
   const navAdmin = getByID<HTMLDivElement>("CMNavAdmin");
-  const navLogout = getByID<HTMLDivElement>("CMNavBasicLogout");
-  const pageTitle = getByID<HTMLSpanElement>("CMPageTitle");
-  if (!navBasic || !navAdmin || !navLogout || !pageTitle) return;
-  navLogout.addEventListener("click", (e) => {
+  const navLogout = getByID<HTMLDivElement>("CMNavAdminLogout");
+  const simpleHello = getByID<HTMLSpanElement>("CMSimpleHello");
+  if (!navBasic || !navAdmin || !navLogout || !simpleHello) return;
+  navLogout.addEventListener("click", () => {
     retries.value = 0;
     username.value = "";
     accessToken.value = "";
@@ -106,9 +97,9 @@ function checkAuthorizations() {
     fullName.value = "";
     router.push("/login");
   });
-  navAdmin.remove();
-  navBasic.classList.remove("CM-hidden");
-  pageTitle.classList.remove("CM-hidden");
+  navBasic.remove();
+  navAdmin.classList.remove("CM-hidden");
+  simpleHello.classList.remove("CM-hidden");
   loadModal();
 }
 function loadModal() {
@@ -133,7 +124,7 @@ function showCookiePopup(show: boolean = true) {
   const cookieBox = getByID<HTMLDivElement>("CMCookieBox");
   const cookieModal = getByID<HTMLDivElement>("CMCookieModal");
   if (!cookieBox || !cookieModal) {
-    setTimeout(showCookiePopup, 50);
+    setTimeout(() => showCookiePopup(show), 50);
     return;
   }
   if (!show) {
@@ -150,103 +141,41 @@ function allowAllCookies() {
   lastCookieClicked = Date.now();
   allowCookies.value = true;
   showCookiePopup(false);
-  loadContents();
 }
 onMounted(() => {
   nextTick(() => {
     checkAuthorizations();
   });
 });
-async function loadContents() {
-  if (!accessToken.value) return;
-  var rawContents = [] as ContentItem[];
-  try {
-    const query = new URLSearchParams({
-      username: username.value,
-      userLevel: String(userLevel.value),
-      accessToken: accessToken.value,
-    }).toString();
-    const response = (await $fetch(`${CMServer}/get_contents?${query}`, {
-      headers: { "Content-Type": "application/json" },
-      method: "GET",
-    })) as ContentResponse;
-    rawContents = response.contents;
-  } catch (e: any) {
-    return;
-  }
-  const container = getByID<HTMLDivElement>("CMContainer");
-  if (!container) return;
-  container.innerHTML = "";
-  const contents = renderContents(rawContents) as HTMLElement;
-  container.appendChild(contents);
-}
-function renderContents(data: ContentItem[]): HTMLElement {
-  const parent = document.createElement("div");
-  parent.className = "CM-contents";
-  data.forEach((item, index) => {
-    const wrapper = document.createElement("div");
-    wrapper.id = `content-${index}`;
-    wrapper.className = "CM-content-box";
-    const title = document.createElement("h2");
-    title.className = "CM-content-title";
-    title.textContent = item.title;
-    const meta = document.createElement("p");
-    const date = new Date(item.createdAt * 1000);
-    const published = date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-    meta.textContent = `by ${item.author} • ${published}`;
-    meta.className = "CM-content-meta";
-    const content = document.createElement("p");
-    content.className = "CM-content-data";
-    content.textContent = item.content;
-    wrapper.append(title, meta, content);
-    parent.appendChild(wrapper);
-  });
-  return parent;
-}
 </script>
 <style>
-.CM-nav-link:hover {
+.CM-nav-admin {
+  background-color: #ec5228 !important;
+}
+.CM-nav-admin a,
+.CM-nav-admin span {
+  color: #fff !important;
+}
+.CM-nav-admin .CM-nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+.CM-nav-admin .CM-nav-home:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+.CM-nav-admin .CM-nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
   cursor: pointer;
 }
-.CM-page-title {
-  position: relative;
-  margin: 60px auto 0;
-  width: 800px;
-  max-width: 90%;
-  padding: 20px;
-  font-size: 1.8em;
-  font-weight: bold;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  display: block;
-}
-.CM-container {
-  position: relative;
-  margin: 20px auto 0;
-  width: 800px;
-  max-width: 90%;
-}
-.CM-content-box {
-  margin-bottom: 10px;
+.CM-simple-hello {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
   padding: 20px;
   background: #fff;
-  border-radius: 3px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-}
-.CM-content-title {
-  line-height: 1.5em;
-  font-weight: bold;
-}
-.CM-content-meta {
-  font-size: 0.8em;
-  color: #666;
-}
-.CM-content-data {
-  margin-top: 10px;
-  line-height: 1.5em;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 1px #000000bf;
 }
 </style>

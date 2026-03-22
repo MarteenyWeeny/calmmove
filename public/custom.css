@@ -1,215 +1,200 @@
 /* (c) 2025 Martin Benedict E. Ybas */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: "Funnel Sans", Arial, Helvetica, sans-serif;
-    background-color: #F9FAFB;
+  font-family: "Funnel Sans", Arial, Helvetica, sans-serif;
+  background-color: #f9fafb;
 
-    color: #111827;
-
+  color: #111827;
 }
 
-
 .CM-navbar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 50px;
-    background-color: #FFFFFF;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #ffffff;
 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-    overflow: hidden;
-    z-index: 7000;
+  overflow: hidden;
+  z-index: 7000;
 }
 
 .CM-nav-left {
-    margin-left: 5%;
-    display: inline-flex;
-    width: fit-content;
-    float: left;
+  margin-left: 5%;
+  display: inline-flex;
+  width: fit-content;
+  float: left;
 }
 
 .CM-nav-home {
-    margin: 5px;
-    padding: 10px 8px;
-    display: flex;
-    align-items: center;
-    font-family: "Roboto", Arial, serif, sans-serif;
-    font-size: 1.2em;
-    text-decoration: none;
-    border-radius: 8px;
-    color: #0F766E;
-
+  margin: 5px;
+  padding: 10px 8px;
+  display: flex;
+  align-items: center;
+  font-family: "Roboto", Arial, serif, sans-serif;
+  font-size: 1.2em;
+  text-decoration: none;
+  border-radius: 8px;
+  color: #0f766e;
 }
 
 .CM-nav-home:hover {
-    background-color: #0E9488;
-
+  background-color: #0e9488;
 }
 
 .CM-nav-logo {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
 }
 
 .CM-nav-right {
-    margin-right: 5%;
-    display: inline-flex;
-    width: fit-content;
-    float: right;
+  margin-right: 5%;
+  display: inline-flex;
+  width: fit-content;
+  float: right;
 }
 
 .CM-nav-right ul {
-    list-style: none;
+  list-style: none;
 }
 
 .CM-nav-right ul li {
-    display: inline;
+  display: inline;
 }
 
 .CM-nav-link {
-    margin: 6px;
-    padding: 10px 8px;
-    display: inline-block;
-    font-size: 0.9em;
-    text-decoration: none;
-    border-radius: 8px;
-    color: #84CC16;
-
+  margin: 6px;
+  padding: 10px 8px;
+  display: inline-block;
+  font-size: 0.9em;
+  text-decoration: none;
+  border-radius: 8px;
+  color: #84cc16;
 }
 
 .CM-nav-link:hover {
-    background-color: #D9F99D;
-
+  background-color: #d9f99d;
 }
 
-
-
 .CM-main {
-    min-height: 800px;
+  min-height: 800px;
 }
 
 .CM-hidden {
-    display: none !important;
+  display: none !important;
 }
 
 .CM-cookie-modal {
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-    background: #00000080;
-    z-index: 8000;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  background: #00000080;
+  z-index: 8000;
 }
 
 .CM-cookie-box {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    margin: 30px;
-    padding: 20px;
-    width: 400px;
-    max-width: Calc(100% - 60px);
-    font-size: 0.9em;
-    background-color: #FFFFFF;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  margin: 30px;
+  padding: 20px;
+  width: 400px;
+  max-width: Calc(100% - 60px);
+  font-size: 0.9em;
+  background-color: #ffffff;
 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-    border: 1px solid #E5E7EB;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e5e7eb;
 
-    border-radius: 7px;
-    z-index: 9000;
+  border-radius: 7px;
+  z-index: 9000;
 }
 
 .CM-cookie-x {
-    position: absolute;
-    right: 0;
-    margin: 0 20px;
-    line-height: 1.5em;
-    cursor: pointer;
+  position: absolute;
+  right: 0;
+  margin: 0 20px;
+  line-height: 1.5em;
+  cursor: pointer;
 }
 
 .CM-cookie-x:hover {
-    text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 .CM-cookie-header {
-    font-weight: bold;
-    line-height: 1.5em;
-    color: #111827;
-
+  font-weight: bold;
+  line-height: 1.5em;
+  color: #111827;
 }
 
 .CM-cookie-actions {
-    margin: 25px 0 8px;
-    text-align: right;
+  margin: 25px 0 8px;
+  text-align: right;
 }
 
 .CM-cookie-action {
-    padding: 10px 15px;
-    width: 100px;
-    display: inline;
-    font-size: .9em;
-    border-radius: 3px;
-    cursor: pointer;
+  padding: 10px 15px;
+  width: 100px;
+  display: inline;
+  font-size: 0.9em;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 .CM-cookie-link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .CM-cookie-more {
-    color: #0F766E;
-
+  color: #0f766e;
 }
 
 .CM-cookie-more:hover {
-    margin: 0 0 0 5px;
-    text-decoration: underline;
+  margin: 0 0 0 5px;
+  text-decoration: underline;
 }
 
 .CM-cookie-ok {
-    margin: 0 0 0 5px;
-    color: #FFFFFF;
-    background-color: #84CC16;
-
+  margin: 0 0 0 5px;
+  color: #ffffff;
+  background-color: #84cc16;
 }
 
 .CM-cookie-ok:hover {
-    margin: 0 0 0 5px;
-    color: #FFFFFF;
-    background-color: #84CC16cc;
-
+  margin: 0 0 0 5px;
+  color: #ffffff;
+  background-color: #84cc16cc;
 }
 
-
 .CM-footer-area {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 0.8em;
-    text-align: center;
-    color: #6B7280;
-    background-color: #F9FAFB;
-
+  width: 100%;
+  padding: 10px 0;
+  font-size: 0.8em;
+  text-align: center;
+  color: #6b7280;
+  background-color: #f9fafb;
 }
 
 .CM-footer-links a {
-    font-weight: bold;
-    text-decoration: none;
-    color: #0F766E;
-
+  font-weight: bold;
+  text-decoration: none;
+  color: #0f766e;
 }
 
 .CM-footer-copyright {
-    margin-top: 5px;
+  margin-top: 5px;
 }
