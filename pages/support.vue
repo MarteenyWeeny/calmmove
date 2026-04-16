@@ -2,16 +2,30 @@
 
 <template>
   <client-only>
-    <NavBar />
-    <div id="CMMain" class="CM-main"></div>
+    <NavBar navAdminMode="" />
+    <div id="CMMain" class="CM-main">
+      <div class="CM-support-container">
+        <h1 class="CM-support-title">Account Deletion</h1>
+        <p class="CM-support-date"><strong>Effective Date:</strong> April 16, 2026</p>
+
+        <h2 class="CM-support-section-title">Data Retention and Deletion</h2>
+        <p class="CM-support-text">
+          You can request the deletion of your account and all associated data at any time. When you delete your account, all your personal data and inputted information will be permanently removed from our systems.
+        </p>
+
+        <p class="CM-support-text">
+          Please contact us at <a href="mailto:calmmove.support@gmail.com" class="CM-support-link">calmmove.support@gmail.com</a>.
+        </p>
+      </div>
+    </div>
     <Copyright />
   </client-only>
 </template>
 
 <script setup lang="ts">
-const title = "LetMCook | Home";
+const title = "CalmMove | Support";
 const description =
-  "Smart meal planner using your ingredients to meet nutrient goals.";
+  "Support and account deletion information for CalmMove.";
 
 useSeoMeta({
   title: () => title,
