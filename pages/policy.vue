@@ -1,7 +1,7 @@
 <template>
   <client-only>
     <NavBar />
-    <main id="CMMain" class="CM-main">
+    <main id="CMMain" class="CM-main" role="main">
       <article class="pp-article">
         <header class="pp-header">
           <h1 class="pp-title">Privacy Policy – LetMCook</h1>
@@ -10,7 +10,11 @@
 
         <section class="pp-intro">
           <p>At LetMCook App, your privacy is important.</p>
-          <p>This Privacy Policy explains how we collect, use, store, and protect your personal data in accordance with the <strong>EU General Data Protection Regulation (GDPR)</strong> and the <strong>Philippine Data Privacy Act of 2012 (DPA)</strong>.</p>
+          <p>
+            This Privacy Policy explains how we collect, use, store, and protect your personal data in accordance with the 
+            <strong>EU General Data Protection Regulation (GDPR)</strong> and the 
+            <strong>Philippine Data Privacy Act of 2012 (DPA)</strong>.
+          </p>
           <p>By using the App, you consent to the practices described here.</p>
         </section>
 
@@ -99,7 +103,7 @@
               </ul>
             </div>
             <div class="pp-rights-card">
-              <h3 class="pp-subsection-title">Under Philippine DPA (Philippine Users):</h3>
+              <h3 class="pp-subsection-title">Under Philippine DPA:</h3>
               <ul class="pp-list">
                 <li>Access your personal data</li>
                 <li>Correct errors in your data</li>
@@ -109,30 +113,30 @@
             </div>
           </div>
           <div class="pp-callout">
-            <p><strong>How to Exercise Rights:</strong> Email <a href="mailto:martin9876543219@gmail.com" class="CM-footer-links">martin9876543219@gmail.com</a> with your account email and request type.</p>
+            <p><strong>How to Exercise Rights:</strong> Email <a href="mailto:martin9876543219@gmail.com" class="pp-link">martin9876543219@gmail.com</a> with your account email and request type.</p>
           </div>
         </section>
 
         <section class="pp-section">
           <h2 class="pp-section-title">7. Data Security</h2>
-          <p>We implement <strong>reasonable administrative, technical, and physical measures</strong> to protect your personal data.</p>
+          <p>We implement <strong>reasonable administrative, technical, and physical measures</strong> to protect your personal data from unauthorized access, disclosure, or loss.</p>
         </section>
 
         <section class="pp-section">
           <h2 class="pp-section-title">8. Children's Privacy</h2>
-          <p>The App is <strong>not intended for children under 13</strong>.</p>
+          <p>The App is <strong>not intended for children under 13</strong>. We do not knowingly collect data from children.</p>
         </section>
 
         <section class="pp-section">
           <h2 class="pp-section-title">9. Changes to this Privacy Policy</h2>
-          <p>We may update this policy occasionally. Significant changes will be notified via email or in-app notification.</p>
+          <p>We may update this policy occasionally. Significant changes will be notified via email or in-app notification. Continued use constitutes acceptance of the updated policy.</p>
         </section>
 
         <section class="pp-section">
           <h2 class="pp-section-title">10. Contact Us</h2>
           <address class="pp-address">
-            Email: <a href="mailto:martin9876543219@gmail.com" class="CM-footer-links">martin9876543219@gmail.com</a><br>
-            Address: Baybay City, Leyte
+            <strong>Email:</strong> <a href="mailto:martin9876543219@gmail.com" class="pp-link">martin9876543219@gmail.com</a><br>
+            <strong>Address:</strong> Baybay City, Leyte
           </address>
         </section>
       </article>
@@ -144,7 +148,7 @@
 <style scoped>
 .pp-article {
   max-width: 800px;
-  margin: 80px auto 60px;
+  margin: 80px auto 60px; /* Offset for 50px fixed NavBar */
   padding: 0 5%;
   color: #374151;
   line-height: 1.75;
@@ -157,23 +161,15 @@
 }
 
 .pp-title {
-  font-size: 2em;
+  font-size: 2.25em;
   font-weight: 700;
-  color: #0f766e;
+  color: #0f766e; /* Brand teal */
   margin-bottom: 6px;
 }
 
 .pp-effective-date {
   font-size: 0.9em;
-  color: #6b7280;
-}
-
-.pp-intro {
-  margin-bottom: 32px;
-}
-
-.pp-intro p + p {
-  margin-top: 10px;
+  color: #6b7280; /* Footer grey */
 }
 
 .pp-section {
@@ -183,14 +179,14 @@
 .pp-section-title {
   font-size: 1.25em;
   font-weight: 700;
-  color: #111827;
+  color: #111827; /* Main text */
   margin-bottom: 12px;
   padding-bottom: 8px;
   border-bottom: 1px solid #e5e7eb;
 }
 
 .pp-subsection-title {
-  font-size: 0.95em;
+  font-size: 1em;
   font-weight: 600;
   color: #374151;
   margin: 16px 0 8px;
@@ -203,7 +199,6 @@
 
 .pp-list li {
   margin-bottom: 6px;
-  font-size: 0.92em;
 }
 
 .pp-list--ordered {
@@ -214,13 +209,13 @@
   margin: 16px 0;
   padding: 16px 20px;
   background-color: #f9fafb;
-  border-left: 3px solid #84cc16;
+  border-left: 4px solid #84cc16; /* Brand lime */
   border-radius: 0 6px 6px 0;
 }
 
 .pp-rights-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 16px;
   margin-bottom: 16px;
 }
@@ -228,19 +223,28 @@
 .pp-rights-card {
   padding: 16px;
   border: 1px solid #e5e7eb;
-  border-radius: 6px;
+  border-radius: 8px;
   background-color: #ffffff;
+}
+
+.pp-link {
+  color: #0f766e;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.pp-link:hover {
+  text-decoration: underline;
 }
 
 .pp-address {
   font-style: normal;
-  font-size: 0.92em;
   line-height: 2;
 }
 
 @media (max-width: 640px) {
-  .pp-rights-grid {
-    grid-template-columns: 1fr;
+  .pp-title {
+    font-size: 1.75em;
   }
 }
 </style>
