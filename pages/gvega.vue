@@ -15,15 +15,6 @@
     </section>
 
     <section class="resume-section">
-      <h2 class="section-title">Work Experience</h2>
-      <div class="resume-item" v-for="(job, index) in workExperience" :key="index">
-        <h3 class="item-title">{{ job.role }}</h3>
-        <span class="item-dates">{{ job.dates }}</span>
-        <p class="item-desc">{{ job.description }}</p>
-      </div>
-    </section>
-
-    <section class="resume-section">
       <h2 class="section-title">Educational Background</h2>
       <div class="resume-item" v-for="(edu, index) in education" :key="index">
         <h3 class="item-title">{{ edu.school }}</h3>
@@ -65,9 +56,9 @@ import { useHead } from '#imports' // Adjust if not using Nuxt auto-imports
 // MEMBER CONFIGURATION: Edit details below
 // ==========================================
 
-const fullName = "Firstname Lastname"
-const email = "firstname.lastname@gmail.com"
-const bio = "I solve problems, sometimes writing code, and sometimes talking to people."
+const fullName = "Geryme Vega"
+const email = "24-1-01154@vsu.edu.ph"
+const bio = "I enjoy watching movies and underrated animes in my spare time. I also play games!"
 const profileImage = "/your-image-filename.png" // Image must be inside public/ directory
 
 // Steps 4 & 5: Set Page Title and Description automatically
@@ -78,17 +69,9 @@ useHead({
   ]
 })
 
-const workExperience = [
-  {
-    role: "Role",
-    dates: "month year – month year",
-    description: "Brief Description"
-  }
-]
-
 const education = [
   {
-    school: "University of XXX",
+    school: "Visayas State University",
     degree: "Bachelor of Science in YYY",
     dates: "month year – month year"
   }
