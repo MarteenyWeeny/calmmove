@@ -58,8 +58,8 @@ import { useHead } from '#imports' // Adjust if not using Nuxt auto-imports
 
 const fullName = "Geryme Vega"
 const email = "24-1-01154@vsu.edu.ph"
-const bio = "I enjoy watching movies and underrated animes in my spare time. I also play games!"
-const profileImage = "/your-image-filename.png" // Image must be inside public/ directory
+const bio = "I enjoy watching movies and underrated anime in my spare time, and I like exploring stories with unique characters and themes. I also play games to relax, stay creative, and connect with friends after a busy day."
+const profileImage = "/gvega.png" // Image must be inside public/ directory
 
 // Steps 4 & 5: Set Page Title and Description automatically
 useHead({
@@ -72,32 +72,32 @@ useHead({
 const education = [
   {
     school: "Visayas State University",
-    degree: "Bachelor of Science in YYY",
-    dates: "month year – month year"
+    degree: "Bachelor of Science in Computer Science",
+    dates: "August 2024 – Present"
   }
 ]
 
 const projects = [
   {
-    name: "Project Name",
-    dates: "month year - month year",
-    description: "Brief Description of the project."
+    name: "LetMCook",
+    dates: "March 2026 - Present",
+    description: "Smart meal planner using your ingredients to meet nutrient goals."
   }
 ]
 
 const certifications = [
   {
-    name: "Certificate Name",
-    issuer: "Certificate Issuer",
-    date: "month year"
+    name: "AWS Certified Machine Learnign: Data Engineering, Machine Learning, & AWS",
+    issuer: "Skillsoft",
+    date: "Jun 2025"
   }
 ]
 
 const skills = [
-  "Skill 1",
-  "Skill 2",
-  "Skill 3",
-  "Skill 4"
+  "C/C++",
+  "Java",
+  "Python",
+  "Typescript"
 ]
 </script>
 
