@@ -121,6 +121,8 @@
 </template>
 
 <script setup lang="ts">
+import { useHead, useSeoMeta } from 'nuxt/app';
+
 const title = "LetMCook | Home";
 const description =
   "Smart meal planner using your ingredients to meet nutrient goals.";
