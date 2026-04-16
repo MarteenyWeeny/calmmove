@@ -15,15 +15,6 @@
     </section>
 
     <section class="resume-section">
-      <h2 class="section-title">Work Experience</h2>
-      <div class="resume-item" v-for="(job, index) in workExperience" :key="index">
-        <h3 class="item-title">{{ job.role }}</h3>
-        <span class="item-dates">{{ job.dates }}</span>
-        <p class="item-desc">{{ job.description }}</p>
-      </div>
-    </section>
-
-    <section class="resume-section">
       <h2 class="section-title">Educational Background</h2>
       <div class="resume-item" v-for="(edu, index) in education" :key="index">
         <h3 class="item-title">{{ edu.school }}</h3>
@@ -65,10 +56,10 @@ import { useHead } from '#imports' // Adjust if not using Nuxt auto-imports
 // MEMBER CONFIGURATION: Edit details below
 // ==========================================
 
-const fullName = "Firstname Lastname"
-const email = "firstname.lastname@gmail.com"
-const bio = "I solve problems, sometimes writing code, and sometimes talking to people."
-const profileImage = "/your-image-filename.png" // Image must be inside public/ directory
+const fullName = "Radz Ponce A. Moreno"
+const email = "24-1-01485@vsu.edu.ph"
+const bio = "I build software that turns ideas into impact. As a Computer Science student, I focus on web development, algorithms, and system design to create fast, clean, and reliable digital experiences. I’m driven by curiosity, obsessed with improvement, and motivated to ship technology that solves real problems."
+const profileImage = "/images.jpg" // Image must be inside public/ directory
 
 // Steps 4 & 5: Set Page Title and Description automatically
 useHead({
@@ -78,43 +69,35 @@ useHead({
   ]
 })
 
-const workExperience = [
-  {
-    role: "Role",
-    dates: "month year – month year",
-    description: "Brief Description"
-  }
-]
-
 const education = [
   {
-    school: "University of XXX",
-    degree: "Bachelor of Science in YYY",
-    dates: "month year – month year"
+    school: "Visayas State University",
+    degree: "Bachelor of Science in Computer Science",
+    dates: "August 2024 – Present"
   }
 ]
 
 const projects = [
   {
-    name: "Project Name",
-    dates: "month year - month year",
-    description: "Brief Description of the project."
+    name: "LetMCook",
+    dates: "March 2026 - Present",
+    description: "Smart meal planner using your ingredients to meet nutrient goals."
   }
 ]
 
 const certifications = [
   {
-    name: "Certificate Name",
-    issuer: "Certificate Issuer",
-    date: "month year"
+    name: "Problem Solving Certificate",
+    issuer: "HackerRank",
+    date: "August 2025"
   }
 ]
 
 const skills = [
-  "Skill 1",
-  "Skill 2",
-  "Skill 3",
-  "Skill 4"
+  "C/C++",
+  "Typescript",
+  "Python",
+  "Java"
 ]
 </script>
 
