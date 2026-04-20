@@ -1,6 +1,6 @@
 <template>
   <div class="personal-page-container">
-    <header class="profile-header">
+    <header class="profile-header animate-in">
       <div class="avatar-container">
         <img :src="profileImage" alt="Profile Picture" class="profile-avatar" />
       </div>
@@ -10,11 +10,11 @@
       </div>
     </header>
 
-    <section class="bio-section">
+    <section class="bio-section animate-in delay-1">
       <p>{{ bio }}</p>
     </section>
 
-    <section class="resume-section">
+    <section class="resume-section animate-in delay-2">
       <h2 class="section-title">Educational Background</h2>
       <div class="resume-item" v-for="(edu, index) in education" :key="index">
         <h3 class="item-title">{{ edu.school }}</h3>
@@ -23,15 +23,15 @@
       </div>
     </section>
 
-    <section class="resume-section">
+    <section class="resume-section animate-in delay-3">
       <h2 class="section-title">Projects</h2>
-      <div class="resume-item" v-for="(project, index) in projects" :key="index">
+      <div class="resume-item project-card" v-for="(project, index) in projects" :key="index">
         <h3 class="item-title">{{ project.name }} | <span class="item-dates-inline">{{ project.dates }}</span></h3>
         <p class="item-desc">{{ project.description }}</p>
       </div>
     </section>
 
-    <section class="resume-section">
+    <section class="resume-section animate-in delay-4">
       <h2 class="section-title">Licenses and Certifications</h2>
       <div class="resume-item" v-for="(cert, index) in certifications" :key="index">
         <h3 class="item-title">{{ cert.name }}</h3>
@@ -40,10 +40,10 @@
       </div>
     </section>
 
-    <section class="resume-section">
+    <section class="resume-section animate-in delay-5">
       <h2 class="section-title">Skills</h2>
       <ul class="skills-list">
-        <li v-for="(skill, index) in skills" :key="index">{{ skill }}</li>
+        <li v-for="(skill, index) in skills" :key="index" class="skill-badge">{{ skill }}</li>
       </ul>
     </section>
   </div>
@@ -59,7 +59,7 @@ import { useHead } from '#imports' // Adjust if not using Nuxt auto-imports
 const fullName = "Pete Alexander Piangco"
 const email = "24-1-01218@vsu.edu.ph"
 const bio = "I turn complex ideas into high-impact software, leveraging a foundation in system design and algorithms to ship fast, reliable, and meticulously crafted digital experiences. I also like cats"
-const profileImage = "/ppiangco.png" // Image must be inside public/ directory
+const profileImage = "/ppiangco.jpg" // Image must be inside public/ directory
 
 // Steps 4 & 5: Set Page Title and Description automatically
 useHead({
@@ -102,149 +102,142 @@ const skills = [
 </script>
 
 <style scoped>
-/* Step 8: Scoped CSS integrating your app's overarching theme */
+/* Base Container Styles */
 .personal-page-container {
   font-family: "Funnel Sans", Arial, Helvetica, sans-serif;
-  color: #1e293b; /* Slate 800 for better readability */
+  color: #1e293b;
   max-width: 800px;
   margin: 0 auto;
-  padding: 40px 20px;
-  background-color: #f8fafc; /* Very light slate blue-gray background */
+  padding: 80px 20px; /* Top padding to clear fixed navbar */
+  background-color: #f8fafc;
+  overflow-x: hidden;
 }
 
+/* Animations Logic */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  opacity: 0;
+  animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+/* Profile Header with Hover Glow */
 .profile-header {
   display: flex;
   align-items: center;
-  gap: 20px;
-  margin-bottom: 30px;
+  gap: 25px;
+  margin-bottom: 40px;
 }
 
 .avatar-container {
-  width: 90px;
-  height: 90px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid #0f172a; /* Deep Navy border */
-  background-color: #ffffff;
-  box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
+  border: 3px solid #0f766e; /* Using LetMCook Teal */
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 10px 25px -5px rgba(15, 118, 110, 0.2);
 }
 
-.profile-avatar {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.profile-info {
-  display: flex;
-  flex-direction: column;
+.avatar-container:hover {
+  transform: scale(1.05) rotate(5deg);
+  box-shadow: 0 15px 30px -5px rgba(15, 118, 110, 0.4);
 }
 
 .profile-name {
-  font-size: 1.8em;
+  font-size: 2.2em;
   font-weight: 800;
-  margin: 0 0 5px 0;
-  color: #0f172a; /* Deep Navy */
+  background: linear-gradient(135deg, #0f766e, #84cc16); /* Teal to Lime gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.profile-email {
-  margin: 0;
-  font-size: 0.95em;
-  color: #64748b; /* Muted Slate */
-  letter-spacing: 0.02em;
-}
-
-.bio-section {
-  margin-bottom: 40px;
-  font-size: 1.05em;
-  line-height: 1.7;
-  color: #334155;
-}
-
+/* Interactive Section Cards */
 .resume-section {
   margin-bottom: 30px;
   background-color: #ffffff;
   padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
   border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.resume-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  border-color: #84cc16; /* Highlights with brand lime on hover */
 }
 
 .section-title {
   font-size: 1.1em;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-top: 0;
+  letter-spacing: 0.1em;
   margin-bottom: 25px;
-  color: #1e293b;
-  border-left: 4px solid #0f172a; /* Deep Navy accent */
-  padding-left: 15px;
-}
-
-.resume-item {
-  margin-bottom: 25px;
-}
-
-.resume-item:last-child {
-  margin-bottom: 0;
-}
-
-.item-title {
-  font-size: 1.1em;
-  font-weight: 700;
-  margin: 0 0 4px 0;
   color: #0f172a;
-}
-
-.item-subtitle {
-  margin: 0 0 4px 0;
-  font-size: 0.95em;
-  font-weight: 500;
-  color: #475569;
-}
-
-.item-dates {
-  display: block;
-  font-size: 0.85em;
-  color: #94a3b8;
-  margin-bottom: 10px;
-  font-weight: 500;
-}
-
-.item-desc {
-  margin: 0;
-  font-size: 0.95em;
-  line-height: 1.6;
-  color: #334155;
-}
-
-.skills-list {
-  list-style-type: none; /* Removed discs for a cleaner look */
-  padding-left: 0;
-  margin: 0;
-  columns: 2;
-  column-gap: 40px;
-}
-
-.skills-list li {
-  margin-bottom: 10px;
-  font-size: 0.9em;
-  color: #334155;
+  border-left: 5px solid #0f766e;
   padding-left: 15px;
-  position: relative;
 }
 
-/* Custom minimal bullet for skills */
-.skills-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 4px;
-  background-color: #cbd5e1;
-  border-radius: 50%;
+/* Project Cards */
+.project-card {
+  padding: 15px;
+  border-radius: 8px;
+  background: linear-gradient(to right, #ffffff, #f1f5f9);
+  border-left: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.project-card:hover {
+  border-left-color: #0f766e;
+}
+
+/* Flashy Skills Badges */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-badge {
+  background: #f1f5f9;
+  color: #0f766e;
+  padding: 8px 16px;
+  border-radius: 99px;
+  font-size: 0.9em;
+  font-weight: 600;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.skill-badge:hover {
+  background: #0f766e;
+  color: #ffffff;
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 10px 15px -3px rgba(15, 118, 110, 0.3);
+}
+
+@media (max-width: 640px) {
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 </style>
