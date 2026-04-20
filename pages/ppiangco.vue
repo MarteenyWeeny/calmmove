@@ -59,7 +59,7 @@ import { useHead } from '#imports' // Adjust if not using Nuxt auto-imports
 const fullName = "Pete Alexander Piangco"
 const email = "24-1-01218@vsu.edu.ph"
 const bio = "I turn complex ideas into high-impact software, leveraging a foundation in system design and algorithms to ship fast, reliable, and meticulously crafted digital experiences. I also like cats"
-const profileImage = "/ppiangco.png" // Image must be inside public/ directory
+const profileImage = "/ppiangco.jpg" // Image must be inside public/ directory
 
 // Steps 4 & 5: Set Page Title and Description automatically
 useHead({

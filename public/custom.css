@@ -253,3 +253,6 @@ body {
 .CM-support-link:hover {
   text-decoration: underline;
 }
+.person-name {
+  text-decoration: none;
+}

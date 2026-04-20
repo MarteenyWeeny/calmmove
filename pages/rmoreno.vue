@@ -59,7 +59,7 @@ import { useHead } from '#imports' // Adjust if not using Nuxt auto-imports
 const fullName = "Radz Ponce A. Moreno"
 const email = "24-1-01485@vsu.edu.ph"
 const bio = "I build software that turns ideas into impact. As a Computer Science student, I focus on web development, algorithms, and system design to create fast, clean, and reliable digital experiences. I’m driven by curiosity, obsessed with improvement, and motivated to ship technology that solves real problems."
-const profileImage = "/images.jpg" // Image must be inside public/ directory
+const profileImage = "/rmoreno.jpg" // Image must be inside public/ directory
 
 // Steps 4 & 5: Set Page Title and Description automatically
 useHead({

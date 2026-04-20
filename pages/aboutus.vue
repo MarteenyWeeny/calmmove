@@ -11,22 +11,40 @@
             <h2 class="CM-content-title">Our Team</h2>
             <p class="CM-content-meta">Meet the people behind CalmMove</p>
             <div class="about-team">
+
               <div class="person">
-                <span class="person-name">Person 1</span>
+                <NuxtLink class="person-name" to="ybas">Martin Benedict E. Ybas</NuxtLink>
                 <span class="person-role">Project Manager</span>
               </div>
+
               <div class="person">
-                <span class="person-name">Person 2</span>
+                <NuxtLink class="person-name" to="gvega">Geryme Vega</NuxtLink>
+                <span class="person-role">Backend Developer</span>
+              </div>
+
+              <div class="person">
+                <NuxtLink class="person-name" to="ppiangco">Pete Alexander Piangco</NuxtLink>
+                <span class="person-role">Backend Developer</span>
+              </div>
+
+              <div class="person">
+                <NuxtLink class="person-name" to="kahano">John Andrei B. Kahano</NuxtLink>
                 <span class="person-role">Database Designer</span>
               </div>
+
               <div class="person">
-                <span class="person-name">Person 3</span>
+                <NuxtLink class="person-name" to="rmoreno">Radz Ponce A. Moreno</NuxtLink>
                 <span class="person-role">Web Designer</span>
               </div>
-              <div class="person-ellipsis">...</div>
+
               <div class="person">
-                <span class="person-name">Person 6</span>
-                <span class="person-role">Backend Developer</span>
+                <NuxtLink class="person-name" to="lmcaduyac">Liza Mae Caduyac</NuxtLink>
+                <span class="person-role">Web Designer</span>
+              </div>
+
+              <div class="person">
+                <NuxtLink class="person-name" to="ecoting">Eulo Rod M. Coting</NuxtLink>
+                <span class="person-role">Web Designer</span>
               </div>
             </div>
           </div>
@@ -38,6 +56,8 @@
   </client-only>
 </template>
 <script setup lang="ts">
+import { defineNuxtLink } from 'nuxt/app';
+
 const title = "About Us - CalmMove";
 const description = "Meet the team behind CalmMove.";
 useSeoMeta({
