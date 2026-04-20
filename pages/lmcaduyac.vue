@@ -65,8 +65,8 @@ import { useHead } from '#imports' // Adjust if not using Nuxt auto-imports
 // MEMBER CONFIGURATION: Edit details below
 // ==========================================
 
-const fullName = "Liza Mae Caduyac"
-const email = "lizamae.caduyac@gmail.com"
+const fullName = "Liza Mae G. Caduyac"
+const email = "23-1-02225@vsu.edu.ph"
 const bio = "Anime Lover, a sucker of Subharmonics and Metal rock songs, a free spirit, and a Computer Science student."
 const profileImage = "/lmcaduyac.png" // Image must be inside public/ directory
 
@@ -91,20 +91,17 @@ const projects = [
     name: "LetMCook",
     dates: "March 2026 - Present",
     description: "Smart meal planner using your ingredients to meet nutrient goals."
-  }
-]
-
-const certifications = [
+  },
   {
-    name: "AWS Certified Machine Learnign: Data Engineering, Machine Learning, & AWS",
-    issuer: "Skillsoft",
-    date: "June 2025"
+    name: "Winion",
+    dates: "February 2026 - Present",
+    description: "A platform that helps elder to navigate daily routines and lifetime commitment."
   }
 ]
 
 const skills = [
   "C/C++",
-  "Nuxt.js",
+  "Typescript",
   "Java",
   "Python"
 ]
