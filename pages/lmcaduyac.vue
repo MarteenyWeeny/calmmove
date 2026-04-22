@@ -4,135 +4,135 @@
       <div class="avatar-container">
         <img :src="profileImage" alt="Profile Picture" class="profile-avatar" />
       </div>
+      
       <div class="profile-info">
         <h1 class="profile-name">{{ fullName }}</h1>
-        <p class="profile-email">{{ email }}</p>
+        <p class="profile-job">{{ jobDescription }}</p>
+        <p class="profile-bio">{{ bio }}</p>
+        <div class="profile-links">
+          <a :href="portfolio" target="_blank" class="profile-link"> Sierra Bullones, Bohol</a>
+          <a :href="linkedin" target="_blank" class="profile-link"> LinkedIn</a>
+          <a :href="github" target="_blank" class="profile-link"> GitHub</a>
+          <a :href="'mailto:' + email" class="profile-link"> e-mail</a>
+        </div>
       </div>
+
+      <section class="about-me-card">
+        <h2 class="section-title">About Me</h2>
+        <div v-for="(description, index) in AboutMe" :key="index">
+          <p class="item-desc">{{ description.description }}</p>
+        </div>
+      </section>
     </header>
-
-    <section class="bio-section">
-      <p>{{ bio }}</p>
-    </section>
-
-    <section class="resume-section">
-      <h2 class="section-title">Work Experience</h2>
-      <div class="resume-item" v-for="(job, index) in workExperience" :key="index">
-        <h3 class="item-title">{{ job.role }}</h3>
-        <span class="item-dates">{{ job.dates }}</span>
-        <p class="item-desc">{{ job.description }}</p>
-      </div>
-    </section>
 
     <section class="resume-section">
       <h2 class="section-title">Educational Background</h2>
-      <div class="resume-item" v-for="(edu, index) in education" :key="index">
-        <h3 class="item-title">{{ edu.school }}</h3>
-        <p class="item-subtitle">{{ edu.degree }}</p>
-        <span class="item-dates">{{ edu.dates }}</span>
+      <div class="education-grid">
+        <div class="education-card" v-for="(edu, index) in education" :key="index">
+          <h3 class="item-title">{{ edu.school }}</h3>
+          <p class="item-subtitle">{{ edu.degree }}</p>
+          <span class="item-dates">{{ edu.dates }}</span>
+          <p class="item-relevance"><strong>Relevance:</strong> {{ edu.relevance }}</p>
+        </div>
       </div>
     </section>
 
     <section class="resume-section">
       <h2 class="section-title">Projects</h2>
-      <div class="resume-item" v-for="(project, index) in projects" :key="index">
-        <h3 class="item-title">{{ project.name }} | <span class="item-dates-inline">{{ project.dates }}</span></h3>
-        <p class="item-desc">{{ project.description }}</p>
-      </div>
-    </section>
-
-    <section class="resume-section">
-      <h2 class="section-title">Licenses and Certifications</h2>
-      <div class="resume-item" v-for="(cert, index) in certifications" :key="index">
-        <h3 class="item-title">{{ cert.name }}</h3>
-        <p class="item-subtitle">{{ cert.issuer }}</p>
-        <span class="item-dates">{{ cert.date }}</span>
+      <div class="projects-grid">
+        <div class="project-card" v-for="(project, index) in projects" :key="index">
+          <h3 class="item-title">{{ project.name }}</h3>
+          <span class="item-dates">{{ project.dates }}</span>
+          <p class="item-desc">{{ project.description }}</p>
+        </div>
       </div>
     </section>
 
     <section class="resume-section">
       <h2 class="section-title">Skills</h2>
-      <ul class="skills-list">
-        <li v-for="(skill, index) in skills" :key="index">{{ skill }}</li>
-      </ul>
+      <div class="skills-grid">
+        <div class="skill-category-card" v-for="(items, category) in skills" :key="category">
+          <h3 class="item-title category-name">{{ category }}</h3>
+          <ul class="skills-list">
+            <li v-for="skill in items" :key="skill">{{ skill }}</li>
+          </ul>
+        </div>
+      </div>
     </section>
   </div>
 </template>
 
 <script setup>
-import { useHead } from '#imports' // Adjust if not using Nuxt auto-imports
-
-// ==========================================
-// MEMBER CONFIGURATION: Edit details below
-// ==========================================
+import { useHead } from '#imports'
 
 const fullName = "Liza Mae G. Caduyac"
+const jobDescription = "Full Stack Web Developer | Computer Science Student"
+const bio = "Building Seamless Digital Experiences from Pixel to Production."
 const email = "23-1-02225@vsu.edu.ph"
-const bio = "Anime Lover, a sucker of Subharmonics and Metal rock songs, a free spirit, and a Computer Science student."
-const profileImage = "/lmcaduyac.png" // Image must be inside public/ directory
+const linkedin = "https://www.linkedin.com/in/liza-mae-caduyac-55377b3a9/" 
+const github = "https://github.com/Zaming" 
+const portfolio = "https://www.google.com/maps/place/Sierra+Bullones,+Bohol/@9.7923049,124.2496849,13z/data=!3m1!4b1!4m6!3m5!1s0x33aa118cb8b36331:0xe8ae11b37e301512!8m2!3d9.7807194!4d124.297718!16zL20vMDZsZ19t?entry=ttu&g_ep=EgoyMDI2MDQxOS4wIKXMDSoASAFQAw%3D%3D"
+const profileImage = "/lmcaduyac.png" 
 
-// Steps 4 & 5: Set Page Title and Description automatically
 useHead({
   title: fullName,
-  meta: [
-    { name: 'description', content: `The personal page of ${fullName}.` }
-  ]
+  meta: [ { name: 'description', content: `The personal page of ${fullName}.` } ]
 })
 
+const AboutMe = [
+  { description: "Passionate about crafting seamless user experiences and efficient backend solutions. Skilled in JavaScript, Python, and modern web frameworks. Dedicated to continuous learning and delivering high-quality code." }
+]
+
 const education = [
-  {
-    school: "Visayas State University",
-    degree: "Bachelor of Science in Computer Science",
-    dates: "August 2023 – Present"
-  }
+  { school: "Visayas State University", degree: "Bachelor of Science in Computer Science", dates: "August 2023 – Present", relevance: "Focusing on Software Engineering, Data Structures, and Web Development." },
+  { school: "Sierra Bullones Technical Vocational High School", degree: "Senior High School - STEM Strand", dates: "2021 – 2023", relevance: "Foundation in Advanced Mathematics (Pre-Calculus and basic Calculus) and Physics." }
 ]
 
 const projects = [
-  {
-    name: "LetMCook",
-    dates: "March 2026 - Present",
-    description: "Smart meal planner using your ingredients to meet nutrient goals."
-  },
-  {
-    name: "Winion",
-    dates: "February 2026 - Present",
-    description: "A platform that helps elder to navigate daily routines and lifetime commitment."
-  }
+  { name: "LetMCook", dates: "March 2026 - Present", description: "Smart meal planner using your ingredients to meet nutrient goals." },
+  { name: "Winion", dates: "February 2026 - Present", description: "A platform that helps elder to navigate daily routines and lifetime commitment." }
 ]
 
-const skills = [
-  "C/C++",
-  "Typescript",
-  "Java",
-  "Python"
-]
+// UPDATED SKILLS DATA STRUCTURE
+const skills = {
+  Languages: ["C/C++", "TypeScript", "Java", "Python", "JavaScript"],
+  Tools: ["Git", "GitHub", "VS Code", "Node.js", "Vue.js", "Nuxt.js"],
+  Knowledge: ["Web Development", "Data Structures", "UI/UX Design", "Database Management"]
+}
 </script>
 
 <style scoped>
-/* Step 8: Scoped CSS integrating your app's overarching theme */
+/* ... Keep your existing styles ... */
+
 .personal-page-container {
-  font-family: "Funnel Sans", Arial, Helvetica, sans-serif;
-  color: #111827;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  background-color: #f9fafb;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: #000000;
+  box-sizing: border-box;
 }
 
 .profile-header {
   display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 25px;
+  gap: 30px;
+  align-items: stretch;
+  margin-bottom: 40px;
+  width: 100%;
 }
 
 .avatar-container {
-  width: 90px;
-  height: 90px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid #0f766e; /* Teal accent from navbar */
-  background-color: #ffffff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 3px solid #25F4EE;
+  background-color: #FE2C55;
+  box-shadow: 0 4px 15px rgba(37, 244, 238, 0.3);
+  flex-shrink: 0;
 }
 
 .profile-avatar {
@@ -144,97 +144,164 @@ const skills = [
 .profile-info {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  flex: 0 1 auto;
 }
 
 .profile-name {
-  font-size: 1.8em;
+  font-size: 3em;
   font-weight: bold;
   margin: 0 0 5px 0;
-  color: #111827;
+  color: #ffffff;
+  font-family: 'Times New Roman', serif;
 }
 
-.profile-email {
-  margin: 0;
+.profile-job {
+  margin: 0 0 5px 0;
+  font-size: 1.5em;
+  color: #ffffff;
+}
+
+.profile-bio {
+  margin: 0 0 10px 0;
   font-size: 1em;
-  color: #6b7280; /* Footer gray */
+  color: #ffffff;
+  font-style: italic;
 }
 
-.bio-section {
-  margin-bottom: 40px;
-  font-size: 1.05em;
-  line-height: 1.6;
+.profile-link {
+  display: inline-block;
+  margin-right: 15px;
+  color: #000000;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9em;
+  background-color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 2px solid #25F4EE;
+  transition: all 0.3s ease;
+}
+
+.profile-link:hover {
+  background-color: #FE2C55;
+  color: #ffffff;
+  border-color: #ffffff;
 }
 
 .resume-section {
   margin-bottom: 30px;
-  background-color: #ffffff;
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e5e7eb;
+  background-color: #1a1a1a;
+  padding: 30px;
+  border-radius: 15px;
+  border: 1px solid #333333;
 }
 
 .section-title {
-  font-size: 1.3em;
+  font-size: 1.4em;
   font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 20px;
-  color: #111827;
-  border-left: 5px solid #84cc16; /* Lime green accent from nav-link hover */
-  padding-left: 10px;
-}
-
-.resume-item {
   margin-bottom: 25px;
+  color: #ffffff;
+  font-family: 'Times New Roman', serif;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
-.resume-item:last-child {
-  margin-bottom: 0;
+.section-title::before {
+  content: "";
+  width: 40px;
+  height: 10px;
+  background: radial-gradient(circle, #FE2C55 4px, transparent 5px) 0% 50%,
+              radial-gradient(circle, #FFFFFF 4px, transparent 5px) 50% 50%,
+              radial-gradient(circle, #25F4EE 4px, transparent 5px) 100% 50%;
+  background-size: 14px 10px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  flex-shrink: 0;
 }
 
-.item-title {
-  font-size: 1.1em;
-  font-weight: bold;
-  margin: 0 0 4px 0;
-  color: #111827;
+/* NEW SKILLS GRID STYLING */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns for 3 boxes */
+  gap: 20px;
 }
 
-.item-subtitle {
-  margin: 0 0 4px 0;
-  font-size: 0.95em;
-  color: #111827;
+.skill-category-card {
+  background-color: #2d2d2d; /* Match the other cards */
+  border: 2px solid #25F4EE;
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.item-dates {
-  display: block;
-  font-size: 0.85em;
-  color: #6b7280;
-  margin-bottom: 8px;
+.skill-category-card:hover {
+  transform: translateY(-5px);
+  border-color: #FE2C55;
+  box-shadow: 0 10px 20px rgba(37, 244, 238, 0.1);
 }
 
-.item-dates-inline {
-  font-size: 0.85em;
-  font-weight: normal;
-  color: #6b7280;
-}
-
-.item-desc {
-  margin: 0;
-  font-size: 0.95em;
-  line-height: 1.5;
-  color: #374151;
+.category-name {
+  text-transform: capitalize;
+  border-bottom: 1px solid #444;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .skills-list {
-  list-style-type: disc;
-  padding-left: 20px;
-  margin: 0;
-  columns: 2; /* Automatically splits skills into two clean columns */
-  column-gap: 40px;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .skills-list li {
-  margin-bottom: 8px;
-  font-size: 0.95em;
+  color: #ffffff;
+  background-color: #0f766e;
+  border: 2px solid #25F4EE;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.skills-list li:hover {
+  background-color: #FE2C55;
+  transform: scale(1.05);
+}
+
+/* Reusing your existing grid/card styles */
+.education-grid, .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.education-card, .project-card, .about-me-card {
+  background-color: #2d2d2d;
+  border: 2px solid #25F4EE;
+  border-radius: 12px;
+  padding: 25px;
+  color: #ffffff;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  flex: 1;
+}
+
+.education-card:hover, .project-card:hover {
+  transform: translateY(-5px);
+  border-color: #FE2C55;
+}
+
+.item-title { color: #ffffff; font-size: 1.2em; margin-bottom: 5px; }
+.item-subtitle { color: #25F4EE; font-weight: 500; margin-bottom: 5px; }
+.item-dates { color: #b3b3b3; font-size: 0.85em; display: block; margin-bottom: 10px; }
+.item-desc, .item-relevance { color: #ffffff; line-height: 1.6; font-size: 0.95em; }
+
+@media (max-width: 1024px) {
+  .profile-header { flex-direction: column; }
+  .education-grid, .projects-grid, .skills-grid { grid-template-columns: 1fr; }
 }
 </style>
