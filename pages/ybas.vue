@@ -1,280 +1,614 @@
 <template>
-  <div class="personal-page-container">
-    <header class="profile-header">
-      <div class="avatar-container">
-        <img :src="profileImage" alt="Profile Picture" class="profile-avatar" />
-      </div>
-      <div class="profile-info">
-        <h1 class="profile-name">{{ fullName }}</h1>
-        <p class="profile-email">{{ email }}</p>
-      </div>
-    </header>
+  <div class="space-portfolio">
+    <!-- Starfield canvas background -->
+    <canvas ref="starCanvas" class="star-canvas"></canvas>
 
-    <section class="bio-section">
-      <p>{{ bio }}</p>
-    </section>
+    <div class="app-container">
+      <!-- Hero Panel with profile picture -->
+      <div class="glass-panel hero-panel">
+        <div class="hero-main">
+          <!-- Avatar / Profile picture placeholder -->
+          <div class="avatar-container">
+            <img 
+              v-if="profilePicture" 
+              :src="profilePicture" 
+              alt="Profile"
+              class="avatar"
+            />
+            <div v-else class="avatar-placeholder">
+              <i class="fas fa-user-astronaut"></i>
+            </div>
+            <button class="edit-avatar-btn" @click="triggerFileUpload" title="Change picture">
+              <i class="fas fa-camera"></i>
+            </button>
+            <input 
+              type="file" 
+              ref="fileInput" 
+              style="display: none" 
+              accept="image/jpeg,image/png,image/webp"
+              @change="onFileSelected"
+            />
+          </div>
 
-    <section class="resume-section">
-      <h2 class="section-title">Educational Background</h2>
-      <div class="resume-item" v-for="(edu, index) in education" :key="index">
-        <h3 class="item-title">{{ edu.school }}</h3>
-        <p class="item-subtitle">{{ edu.degree }}</p>
-        <span class="item-dates">{{ edu.dates }}</span>
+          <div class="hero-info">
+            <div class="mission-badge">
+              <i class="fas fa-rocket"></i> SPACESHIP LOG // DESIGNATION: CS-EXPLORER
+            </div>
+            <h1>{{ astronaut.name }}</h1>
+            <div class="contact-row">
+              <div class="contact-chip"><i class="fas fa-map-marker-alt"></i> Batuan, Bohol · Poblacion Norte</div>
+              <div class="contact-chip"><i class="fas fa-envelope"></i> {{ astronaut.email }}</div>
+              <div class="contact-chip"><i class="fas fa-phone-alt"></i> {{ astronaut.phone }}</div>
+              <div class="contact-chip"><i class="fab fa-github"></i> <a :href="astronaut.github" target="_blank">github.com/MarteenyWeeny</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Streamlined Active Mission Protocol (separate row) -->
+        <div class="active-mission-protocol">
+          <div class="protocol-track">
+            <span class="protocol-led"></span>
+            <span class="protocol-label">ACTIVE MISSION PROTOCOL</span>
+            <span class="protocol-name">OUTER WILDS · TIMBER HEARTH</span>
+          </div>
+          <div class="protocol-status">
+            <i class="fas fa-satellite-dish"></i> SIGNAL STRONG 
+            <span class="status-dots">🟢 🟢 🟢</span>
+          </div>
+        </div>
+
+        <div class="summary-box">
+          <i class="fas fa-quote-left"></i>
+          <p>{{ summaryText }}</p>
+        </div>
       </div>
-    </section>
 
-    <section class="resume-section">
-      <h2 class="section-title">Projects</h2>
-      <div class="resume-item" v-for="(project, index) in projects" :key="index">
-        <h3 class="item-title">{{ project.name }} | <span class="item-dates-inline">{{ project.dates }}</span></h3>
-        <p class="item-desc">{{ project.description }}</p>
+      <!-- COMPETITIONS (Mission Logs) -->
+      <h2><i class="fas fa-trophy"></i> ✦ MISSION LOGS: COMPETITIONS ✦</h2>
+      <div class="comp-grid">
+        <div v-for="(comp, idx) in competitions" :key="idx" class="comp-card">
+          <span class="rank-badge"><i class="fas fa-award"></i> {{ comp.rank }}</span>
+          <div class="comp-title">{{ comp.name }}</div>
+          <div class="comp-meta">
+            <span><i class="far fa-calendar-alt"></i> {{ comp.date }}</span>
+            <span><i class="fas fa-location-dot"></i> {{ comp.location }}</span>
+          </div>
+          <div class="comp-desc">{{ comp.description }}</div>
+        </div>
       </div>
-    </section>
 
-    <section class="resume-section">
-      <h2 class="section-title">Licenses and Certifications</h2>
-      <div class="resume-item" v-for="(cert, index) in certifications" :key="index">
-        <h3 class="item-title">{{ cert.name }}</h3>
-        <p class="item-subtitle">{{ cert.issuer }}</p>
-        <span class="item-dates">{{ cert.date }}</span>
+      <!-- Education & Projects -->
+      <div class="two-columns">
+        <div>
+          <h2><i class="fas fa-graduation-cap"></i> ACADEMIC LOG</h2>
+          <div class="edu-item">
+            <div class="edu-title">
+              <span><i class="fas fa-university"></i> Visayas State University</span>
+              <span>2024 – 2028</span>
+            </div>
+            <div>B.S. Computer Science (Expected 2028)</div>
+            <div class="coursework">Relevant: Discrete Math, Calculus, Linear Algebra, Computer Programming</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-title">
+              <span><i class="fas fa-atom"></i> Tagbilaran City Science High School</span>
+              <span>With Honors</span>
+            </div>
+            <div>Average Grade: 94.4 · 2018 – 2024</div>
+          </div>
+        </div>
+
+        <div>
+          <h2><i class="fas fa-code-branch"></i> STAR PROJECTS</h2>
+          <div class="project-card">
+            <div class="project-header">
+              <h3><i class="fas fa-utensils"></i> FoodGO</h3>
+              <span class="mission-tag">active · sustainability</span>
+            </div>
+            <p>Surplus food redistribution feature (UI/Frontend/Backend) connecting restaurants with communities to reduce waste.</p>
+            <div class="tech-stack">Stack: Vue, Node, Tailwind, Firebase simulation</div>
+          </div>
+          <div class="project-card quantum-card">
+            <i class="fas fa-quantum"></i> <strong>Quantum Computing Exploration</strong>
+            <div>QCSP Hackathon 2nd place · Hands-on with Qiskit & quantum gates, solving optimization puzzles.</div>
+          </div>
+        </div>
       </div>
-    </section>
 
-    <section class="resume-section">
-      <h2 class="section-title">Skills</h2>
-      <ul class="skills-list">
-        <li v-for="(skill, index) in skills" :key="index">{{ skill }}</li>
-      </ul>
-    </section>
+      <!-- SKILLS -->
+      <h2><i class="fas fa-microchip"></i> ✦ PILOT SKILLSET ✦</h2>
+      <div class="skills-section">
+        <div class="skill-category" v-for="(items, category) in skills" :key="category">
+          <h3><i :class="skillIcon(category)"></i> {{ categoryLabel(category) }}</h3>
+          <div>
+            <span v-for="item in items" class="skill-tag"><i class="fas fa-caret-right"></i> {{ item }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Extra achievements -->
+      <div class="extra-panel glass-panel">
+        <div><i class="fas fa-shield-haltered"></i> <strong>Capture The Flag (uCTF)</strong> — 10th PH University round · Ethical hacking & cryptography</div>
+        <div><i class="fas fa-chalkboard-user"></i> Algolympics 2025 · Top 30 teams (UP-ACM)</div>
+        <div class="mission-tag"><i class="fas fa-sync-alt"></i> TIMELOOP READY</div>
+      </div>
+
+      <div class="footer-note">
+        <i class="fas fa-globe"></i> Outer Wilds protocol · Data core from Martin Benedict Ybas · <i class="fab fa-vuejs"></i> Vue 3 · Deep space exploration<br/>
+        ✦ "The universe is, and we are." – ready for new orbits ✦
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { useHead } from '#imports' // Adjust if not using Nuxt auto-imports
+import { ref, onMounted, onUnmounted } from 'vue'
 
-// ==========================================
-// MEMBER CONFIGURATION: Edit details below
-// ==========================================
-
-const fullName = "Martin Benedict E. Ybas"
-const email = "24-1-01033@vsu.edu.ph"
-const bio = "I love playing games and coding. I enjoy sports and the outdoors as well"
-const profileImage = "/ybas.png" // Image must be inside public/ directory
-
-// Steps 4 & 5: Set Page Title and Description automatically
-useHead({
-  title: fullName,
-  meta: [
-    { name: 'description', content: `The personal page of ${fullName}.` }
-  ]
+// ---------- DATA ----------
+const astronaut = ref({
+  name: "Martin Benedict E. Ybas",
+  email: "24-1-01033@vsu.edu.ph",
+  phone: "+63 916 255 5259",
+  github: "https://github.com/MarteenyWeeny"
 })
 
-const education = [
-  {
-    school: "Visayas State University",
-    degree: "Bachelor of Science in Computer Science",
-    dates: "August 2024 – Present"
-  }
-]
+const summaryText = ref("Motivated Computer Science student with a strong foundation in competitive programming, algorithm design, and hackathons. Experienced in C/C++, Java, Python, CTF events, and quantum computing. Passionate about open-source, logic puzzles, and exploring the cosmos of code.")
 
-const projects = [
-  {
-    name: "LetMCook",
-    dates: "March 2026 - Present",
-    description: "Smart meal planner using your ingredients to meet nutrient goals."
-  },
-  {
-    name: "Student Management System",
-    dates: "December 2025",
-    description: "Architected a student management system with full CRUD functionality and 5 optimized SQL queries that reduced data retrieval time by 90%, plus a CLI interface that cut user input errors by 80%."
-  },
-  {
-    name: "Freelance Web Developer",
-    dates: "June 2025 - July 2025",
-    description: "Developed and deployed a full-stack Django web application for an international client, delivering 100% of core features and improving client workflow efficiency by 20%."
-  },
-  {
-    name: "FoodGO",
-    dates: "February 2025",
-    description: "Designed responsive Next.js and React interfaces that reduced food waste by 15%, led 70% of Figma UI design, and deployed via Vercel."
-  }
-]
+const competitions = ref([
+  { name: "QCSP Quantum Computing Hackathon", rank: "2nd place", date: "October 2024", location: "UP Tacloban (On site)", description: "Hands-on quantum algorithms (Qiskit) solving advanced optimization problems." },
+  { name: "CS Week · C/C++/Java Programming Competition", rank: "3rd place", date: "February 2025", location: "VSU", description: "Efficient algorithms under time pressure, top 3 department." },
+  { name: "CS Week · Hackathon", rank: "3rd place", date: "February 2025", location: "VSU", description: "Team-based creative solutions for real-world challenges." },
+  { name: "UP-ACM Algolympics", rank: "Top 30 teams", date: "March 2025", location: "Online", description: "Complex problem-solving with innovative strategies." },
+  { name: "RSCENE Code-It Programming Competition", rank: "3rd place", date: "June 2025", location: "Catbalogan City", description: "Optimized code balancing complexity and runtime." },
+  { name: "Trend Micro uCTF", rank: "10th place", date: "August 2025", location: "Online", description: "Security, cryptography, ethical hacking in CTF." },
+  { name: "CS Week · C/C++/Java Programming Competition", rank: "1st place", date: "March 2026", location: "VSU", description: "Refined algorithm design, superior problem-solving." }
+])
 
-const certifications = [
-  {
-    name: "QCSP Quantum Computing Hackathon",
-    issuer: "University of the Philippines Tacloban",
-    date: "October 2024",
-    description: "Earned 2nd place while gaining hands-on experience in quantum algorithms and applying quantum programming principles to solve advanced problems."
-  },
-  {
-    name: "CS Week - C/C++/Java Programming Competition",
-    issuer: "VSU",
-    date: "February 2025",
-    description: "Secured 3rd place by demonstrating strong analytical and problem-solving skills developing efficient algorithms under time pressure."
-  },
-  {
-    name: "CS Week - Hackathon",
-    issuer: "VSU",
-    date: "February 2025",
-    description: "Earned 3rd place by collaborating effectively in a team environment to develop creative solutions to real-world challenges."
-  },
-  {
-    name: "UP-ACM Algolympics",
-    issuer: "UP-ACM",
-    date: "March 2025",
-    description: "Placed in the Top 30 online round, enhancing ability to tackle complex problems with innovative strategies within a limited timeframe."
-  },
-  {
-    name: "RSCENE Code-It Programming Competition",
-    issuer: "Catbalogan City, Samar",
-    date: "June 2025",
-    description: "Secured 3rd place, honing ability to write optimized code while balancing complexity and runtime constraints."
-  },
-  {
-    name: "Trend Micro Careers Philippines – uCTF",
-    issuer: "Trend Micro",
-    date: "August 2025",
-    description: "Earned 10th place in the online round, strengthening skills in security, cryptography, and ethical hacking in a competitive environment."
-  }
-];
+const skills = ref({
+  languages: ["C", "C++", "Java", "Python", "JavaScript", "HTML/CSS"],
+  tools: ["Git", "Linux", "Visual Studio Code", "LaTeX", "GCC/G++"],
+  technical: ["Algorithm Design", "Data Structures", "OOP", "Problem Solving", "Basic Quantum Algorithms"],
+  interests: ["Competitive Programming", "Open Source", "Hackathons", "Logic Puzzles", "Academic Writing", "Math Olympiads"]
+})
 
-const skills = [
-  "C/C++",
-  "Java",
-  "Python",
-  "Typescript"
-]
+// Profile picture handling
+const profilePicture = ref('/ybas.png')
+const fileInput = ref(null)
+
+const triggerFileUpload = () => {
+  fileInput.value.click()
+}
+
+const onFileSelected = (event) => {
+  const file = event.target.files[0]
+  if (file && (file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/webp')) {
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      profilePicture.value = e.target.result
+    }
+    reader.readAsDataURL(file)
+  } else {
+    alert("Please select a JPG, PNG, or WEBP image.")
+  }
+}
+
+// Helper methods
+const skillIcon = (category) => {
+  const icons = {
+    languages: "fas fa-code",
+    tools: "fas fa-wrench",
+    technical: "fas fa-brain",
+    interests: "fas fa-heart"
+  }
+  return icons[category] || "fas fa-star"
+}
+const categoryLabel = (category) => {
+  const labels = {
+    languages: "Languages",
+    tools: "Tools & OS",
+    technical: "Technical",
+    interests: "Interests"
+  }
+  return labels[category] || category
+}
+
+// ---------- STARFIELD CANVAS ----------
+const starCanvas = ref(null)
+let animationId = null
+let stars = []
+
+const initStars = () => {
+  const canvas = starCanvas.value
+  if (!canvas) return
+  const w = window.innerWidth
+  const h = window.innerHeight
+  canvas.width = w
+  canvas.height = h
+  const starCount = 400
+  stars = []
+  for (let i = 0; i < starCount; i++) {
+    stars.push({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      radius: Math.random() * 1.8,
+      alpha: Math.random() * 0.5 + 0.3,
+      speed: 0.002 + Math.random() * 0.01,
+      twinkle: Math.random() * Math.PI * 2
+    })
+  }
+}
+
+const drawStars = () => {
+  const canvas = starCanvas.value
+  if (!canvas) return
+  const ctx = canvas.getContext('2d')
+  const w = window.innerWidth
+  const h = window.innerHeight
+  if (canvas.width !== w || canvas.height !== h) {
+    canvas.width = w
+    canvas.height = h
+    initStars()
+  }
+  ctx.clearRect(0, 0, w, h)
+  const grad = ctx.createLinearGradient(0, 0, w*0.3, h*0.5)
+  grad.addColorStop(0, '#03040b')
+  grad.addColorStop(1, '#010101')
+  ctx.fillStyle = grad
+  ctx.fillRect(0, 0, w, h)
+  
+  for (let s of stars) {
+    const twinkleVal = 0.4 + 0.5 * Math.sin(Date.now() * s.speed + s.twinkle)
+    let alphaVal = Math.min(0.9, Math.max(0.2, s.alpha * twinkleVal))
+    ctx.beginPath()
+    ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2)
+    ctx.fillStyle = `rgba(255, 220, 170, ${alphaVal})`
+    ctx.fill()
+    if (alphaVal > 0.7) {
+      ctx.beginPath()
+      ctx.arc(s.x, s.y, s.radius * 1.7, 0, Math.PI * 2)
+      ctx.fillStyle = `rgba(255, 180, 80, 0.1)`
+      ctx.fill()
+    }
+  }
+  animationId = requestAnimationFrame(drawStars)
+}
+
+const handleResize = () => {
+  initStars()
+}
+
+onMounted(() => {
+  initStars()
+  drawStars()
+  window.addEventListener('resize', handleResize)
+})
+
+onUnmounted(() => {
+  if (animationId) cancelAnimationFrame(animationId)
+  window.removeEventListener('resize', handleResize)
+})
 </script>
 
 <style scoped>
-/* Step 8: Scoped CSS integrating your app's overarching theme */
-.personal-page-container {
-  font-family: "Funnel Sans", Arial, Helvetica, sans-serif;
-  color: #111827;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  background-color: #f9fafb;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.profile-header {
+.space-portfolio {
+  background-color: #03050b;
+  font-family: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
+  color: #eef4ff;
+  line-height: 1.5;
+  min-height: 100vh;
+  position: relative;
+}
+
+.star-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.app-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.glass-panel {
+  background: rgba(8, 12, 25, 0.65);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(88, 130, 193, 0.3);
+  border-radius: 2rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(70, 130, 200, 0.2) inset;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.glass-panel:hover {
+  border-color: rgba(255, 140, 50, 0.5);
+}
+
+.hero-panel {
+  padding: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+/* Hero main row: avatar + info */
+.hero-main {
   display: flex;
+  flex-wrap: wrap;
+  gap: 1.8rem;
   align-items: center;
-  gap: 20px;
-  margin-bottom: 25px;
+  margin-bottom: 1.5rem;
 }
 
 .avatar-container {
-  width: 90px;
-  height: 90px;
+  position: relative;
+  flex-shrink: 0;
+}
+.avatar, .avatar-placeholder {
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid #0f766e; /* Teal accent from navbar */
-  background-color: #ffffff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.profile-avatar {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
-}
-
-.profile-info {
+  background: #1f2b48;
+  border: 3px solid #f97316;
+  box-shadow: 0 0 15px rgba(249, 115, 22, 0.4);
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: #f97316;
+}
+.edit-avatar-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: #0f1425;
+  border: 1px solid #f97316;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #f97316;
+  transition: 0.2s;
+}
+.edit-avatar-btn:hover {
+  background: #f97316;
+  color: #03050b;
 }
 
-.profile-name {
-  font-size: 1.8em;
+.hero-info {
+  flex: 1;
+}
+.mission-badge {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  background: #f9731622;
+  padding: 0.2rem 0.8rem;
+  border-radius: 30px;
+  display: inline-block;
+  border: 1px solid #f9731655;
+}
+h1 {
+  font-size: 2.7rem;
+  font-weight: 700;
+  margin: 0.5rem 0 0.2rem;
+}
+
+.contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 0.6rem;
+}
+.contact-chip {
+  background: #0f1425cc;
+  border-radius: 60px;
+  padding: 0.3rem 1rem;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #2a3b5c;
+}
+.contact-chip a {
+  color: #eef4ff;
+  text-decoration: none;
+}
+.contact-chip:hover {
+  border-color: #f97316;
+}
+
+/* Streamlined Active Mission Protocol */
+.active-mission-protocol {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  border-radius: 60px;
+  padding: 0.6rem 1.2rem;
+  margin: 1rem 0 1.2rem;
+  border: 1px solid rgba(249, 115, 22, 0.4);
+}
+.protocol-track {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+}
+.protocol-led {
+  width: 10px;
+  height: 10px;
+  background-color: #f97316;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #f97316;
+  animation: pulse 1.2s infinite;
+}
+.protocol-label {
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+.protocol-name {
+  color: #f97316;
   font-weight: bold;
-  margin: 0 0 5px 0;
-  color: #111827;
+}
+.protocol-status {
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.status-dots {
+  letter-spacing: 2px;
 }
 
-.profile-email {
-  margin: 0;
-  font-size: 1em;
-  color: #6b7280; /* Footer gray */
+@keyframes pulse {
+  0% { opacity: 0.4; transform: scale(0.8);}
+  100% { opacity: 1; transform: scale(1.2);}
 }
 
-.bio-section {
-  margin-bottom: 40px;
-  font-size: 1.05em;
-  line-height: 1.6;
+.summary-box {
+  background: #0a0f1f60;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  margin-top: 0.5rem;
+}
+.summary-box i {
+  color: #f97316;
+  font-size: 1.2rem;
 }
 
-.resume-section {
-  margin-bottom: 30px;
-  background-color: #ffffff;
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e5e7eb;
+/* rest of styles (unchanged, kept from previous) */
+h2 {
+  font-size: 1.8rem;
+  margin: 2rem 0 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-left: 4px solid #f97316;
+  padding-left: 1rem;
+  font-family: 'Share Tech Mono', monospace;
+  text-transform: uppercase;
 }
+h2 i { color: #f97316; }
 
-.section-title {
-  font-size: 1.3em;
+.comp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+.comp-card {
+  background: rgba(5, 8, 18, 0.7);
+  backdrop-filter: blur(8px);
+  border-radius: 1.5rem;
+  padding: 1.2rem;
+  border-left: 4px solid #f97316;
+  transition: transform 0.2s;
+}
+.comp-card:hover { transform: translateY(-5px); box-shadow: 0 20px 30px -12px black; }
+.rank-badge {
+  background: #f97316;
+  color: #03050b;
   font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 20px;
-  color: #111827;
-  border-left: 5px solid #84cc16; /* Lime green accent from nav-link hover */
-  padding-left: 10px;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: 30px;
 }
+.comp-title { font-size: 1.2rem; font-weight: 600; margin: 0.5rem 0 0.3rem; }
+.comp-meta { font-size: 0.75rem; font-family: monospace; color: #9ab3d5; display: flex; gap: 1rem; flex-wrap: wrap; }
+.comp-desc { font-size: 0.85rem; color: #cdddf9; margin-top: 0.6rem; }
 
-.resume-item {
-  margin-bottom: 25px;
+.two-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin: 1rem 0;
 }
-
-.resume-item:last-child {
-  margin-bottom: 0;
+.edu-item, .project-card {
+  background: rgba(12, 18, 34, 0.7);
+  backdrop-filter: blur(8px);
+  border-radius: 1.2rem;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  border: 1px solid #2c3e5e;
 }
+.edu-title { display: flex; justify-content: space-between; flex-wrap: wrap; font-weight: 700; margin-bottom: 0.3rem; }
+.coursework { font-size: 0.8rem; margin-top: 0.4rem; color: #bdd4ff; }
+.project-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+.quantum-card { border-left: 3px solid #3b82f6; }
+.tech-stack { font-size: 0.75rem; margin-top: 0.5rem; font-family: monospace; }
 
-.item-title {
-  font-size: 1.1em;
-  font-weight: bold;
-  margin: 0 0 4px 0;
-  color: #111827;
+.skills-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0;
 }
-
-.item-subtitle {
-  margin: 0 0 4px 0;
-  font-size: 0.95em;
-  color: #111827;
+.skill-category {
+  flex: 1;
+  min-width: 180px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 1.2rem;
+  padding: 1rem;
 }
-
-.item-dates {
-  display: block;
-  font-size: 0.85em;
-  color: #6b7280;
-  margin-bottom: 8px;
+.skill-category h3 { font-size: 1rem; margin-bottom: 0.6rem; border-bottom: 1px dashed #f97316; display: inline-block; }
+.skill-tag {
+  display: inline-block;
+  background: #1f2b48;
+  padding: 0.2rem 0.9rem;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  margin: 0.3rem 0.3rem;
+  font-family: monospace;
+  border: 1px solid #3e5a7c;
 }
-
-.item-dates-inline {
-  font-size: 0.85em;
-  font-weight: normal;
-  color: #6b7280;
+.extra-panel {
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 }
-
-.item-desc {
-  margin: 0;
-  font-size: 0.95em;
-  line-height: 1.5;
-  color: #374151;
+.mission-tag {
+  background: #f9731622;
+  padding: 0.2rem 0.8rem;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  font-family: monospace;
 }
-
-.skills-list {
-  list-style-type: disc;
-  padding-left: 20px;
-  margin: 0;
-  columns: 2; /* Automatically splits skills into two clean columns */
-  column-gap: 40px;
+.footer-note {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 0.75rem;
+  color: #7e95b9;
+  border-top: 1px dashed #2c3e5e;
+  padding-top: 2rem;
 }
-
-.skills-list li {
-  margin-bottom: 8px;
-  font-size: 0.95em;
+@media (max-width: 780px) {
+  .app-container { padding: 1rem; }
+  h2 { font-size: 1.4rem; }
+  h1 { font-size: 2rem; }
+  .avatar, .avatar-placeholder { width: 70px; height: 70px; font-size: 2rem; }
+  .hero-main { gap: 1rem; }
 }
 </style>
