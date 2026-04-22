@@ -184,10 +184,10 @@ import { useHead } from '#imports'
 // MEMBER CONFIGURATION: Edit details below
 // ==========================================
 
-const fullName   = "Radz Ponce A. Moreno"
-const email      = "24-1-01485@vsu.edu.ph"
-const bio        = "I build software that turns ideas into impact. As a Computer Science student, I focus on web development, algorithms, and system design to create fast, clean, and reliable digital experiences. Driven by curiosity, obsessed with improvement."
-const profileImage = "/rmoreno.jpg" // Place image in public/ — leave empty string "" to show initials
+const fullName = "Radz Ponce A. Moreno"
+const email = "24-1-01485@vsu.edu.ph"
+const bio = "I build software that turns ideas into impact. As a Computer Science student, I focus on web development, algorithms, and system design to create fast, clean, and reliable digital experiences. I’m driven by curiosity, obsessed with improvement, and motivated to ship technology that solves real problems."
+const profileImage = "/rmoreno.jpg" // Image must be inside public/ directory
 
 useHead({
   title: fullName,

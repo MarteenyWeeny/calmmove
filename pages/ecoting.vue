@@ -58,8 +58,8 @@ import { useHead } from '#imports' // Adjust if not using Nuxt auto-imports
 
 const fullName = "Eulo Rod M. Coting"
 const email = "22-1-00856@vsu.edu.ph"
-const bio = "Aspriring Web Designer and Frontend Developer with a passion for creating visually stunning and user-friendly websites. With a strong foundation in HTML, CSS, and JavaScript, I am dedicated to crafting seamless digital experiences that captivate users and drive engagement. I am eager to contribute my creativity and technical skills to innovative web projects that push the boundaries of design and functionality."
-const profileImage = "/images.jpg" // Image must be inside public/ directory
+const bio = "Aspiring Web Designer and Frontend Developer with a passion for creating visually stunning and user-friendly websites."
+const profileImage = "/euloPic.jpg" // Image must be inside public/ directory
 
 // Steps 4 & 5: Set Page Title and Description automatically
 useHead({
