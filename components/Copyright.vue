@@ -10,7 +10,9 @@ const year = new Date().getFullYear();
         <span>&nbsp;|&nbsp;</span>
         <a href="/policy">Privacy Policy</a>
         <span>&nbsp;|&nbsp;</span>
-        <a href="support">Support</a>
+        <a href="/support">Support</a>
+        <span>&nbsp;|&nbsp;</span>
+        <a href="/aboutus">About Us</a>
       </nav>
       <div class="CM-footer-copyright">
         <span>&copy;&nbsp;</span>

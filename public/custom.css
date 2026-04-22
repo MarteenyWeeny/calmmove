@@ -198,3 +198,61 @@ body {
 .CM-footer-copyright {
   margin-top: 5px;
 }
+
+/* Support Page Styles */
+.CM-support-container {
+  margin: 70px auto 40px;
+  width: 800px;
+  max-width: 90%;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+}
+
+.CM-support-title {
+  font-size: 2em;
+  font-weight: bold;
+  color: #0f766e;
+  margin-bottom: 5px;
+}
+
+.CM-support-date {
+  font-size: 0.9em;
+  color: #6b7280;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #f3f4f6;
+  padding-bottom: 20px;
+}
+
+.CM-support-date strong {
+  color: #111827;
+}
+
+.CM-support-section-title {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 15px;
+}
+
+.CM-support-text {
+  font-size: 1.05em;
+  line-height: 1.6em;
+  color: #374151;
+  margin-bottom: 20px;
+}
+
+.CM-support-link {
+  color: #0f766e;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.CM-support-link:hover {
+  text-decoration: underline;
+}
+.person-name {
+  text-decoration: none;
+}
