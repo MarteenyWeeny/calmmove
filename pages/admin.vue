@@ -148,34 +148,3 @@ onMounted(() => {
   });
 });
 </script>
-<style>
-.CM-nav-admin {
-  background-color: #ec5228 !important;
-}
-.CM-nav-admin a,
-.CM-nav-admin span {
-  color: #fff !important;
-}
-.CM-nav-admin .CM-nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-}
-.CM-nav-admin .CM-nav-home:hover {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-}
-.CM-nav-admin .CM-nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-  cursor: pointer;
-}
-.CM-simple-hello {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  padding: 20px;
-  background: #fff;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 1px #000000bf;
-}
-</style>
