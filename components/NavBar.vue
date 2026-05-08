@@ -7,6 +7,12 @@
           <span>CalmMove</span>
         </a>
       </nav>
+      <nav id="CMNavGuest" class="CM-nav-right">
+        <ul>
+          <li><a href="/signup" class="CM-nav-link">Sign up</a></li>
+          <li><a href="/signin" class="CM-nav-link">Sign in</a></li>
+        </ul>
+      </nav>
       <nav id="CMNavBasic" class="CM-nav-right CM-hidden">
         <ul>
           <li><a href="#" class="CM-nav-link">Recipes</a></li>

@@ -191,7 +191,10 @@ const profileImage = "/rmoreno.jpg" // Image must be inside public/ directory
 
 useHead({
   title: fullName,
-  meta: [{ name: 'description', content: `The personal page of ${fullName}.` }]
+  meta: [{ name: 'description', content: `The personal page of ${fullName}.` }],
+  bodyAttrs: {
+    class: 'rmoreno-theme'
+  }
 })
 
 const education = [
@@ -288,8 +291,8 @@ onMounted(() => {
 </script>
 
 <style>
-html, body {
-  background-color: #0d0a07 !important;
+body.rmoreno-theme {
+  background-color: #0d0a07;
   color: #e0d0b0;
 }
 </style>
@@ -312,11 +315,6 @@ html, body {
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html, body {
-  background-color: var(--ink) !important;
-  color: var(--bone);
-}
 
 /* ── Page shell ── */
 .page {
