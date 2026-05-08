@@ -10,7 +10,6 @@
 </template>
 
 <script setup lang="ts">
-import { useSeoMeta, useHead } from "@vueuse/head";
 
 const title = "CalmMove";
 const description = "Smart meal planner using your ingredients to meet nutrient goals.";
