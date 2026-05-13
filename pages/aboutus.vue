@@ -148,9 +148,9 @@ function getByID<T extends HTMLElement>(id: string) {
 }
 function checkAuthorizations() {
   if (!accessToken.value) {
-    router.push("/login");
+    router.push("/signin");
   } else if (userLevel.value >= 2) {
-    router.push("/admin");
+    router.push("/");
   }
   const navBasic = getByID<HTMLDivElement>("CMNavBasic");
   const navAdmin = getByID<HTMLDivElement>("CMNavAdmin");
@@ -163,7 +163,7 @@ function checkAuthorizations() {
     accessToken.value = "";
     userLevel.value = -1;
     fullName.value = "";
-    router.push("/login");
+    router.push("/signin");
   });
   navAdmin.remove();
   navBasic.classList.remove("CM-hidden");

@@ -9,6 +9,7 @@
    </client-only>
 </template>
 <script setup lang="ts">
+
 import { useSeoMeta, useHead, useCookie } from 'nuxt/app';
 import { computed, onMounted, nextTick } from 'vue';
 import { useRouter } from 'vue-router';
